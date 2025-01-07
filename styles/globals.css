@@ -1,21 +1,29 @@
+/* styles/globals.css */
+
+/* Tailwind CSS 지시어 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 글로벌 스타일 */
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  scroll-behavior: smooth; /* 부드러운 스크롤 이동 */
+  background-color: black; /* 기본 배경색 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 스크롤바 커스텀 (선택) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
 }
