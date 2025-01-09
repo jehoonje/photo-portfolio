@@ -15,6 +15,7 @@
   }
 }
 
+
 /* 글로벌 스타일 */
 html,
 body {
@@ -38,23 +39,36 @@ body {
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 
-/* styles/globals.css 또는 해당 컴포넌트의 CSS 모듈에 추가 */
+
+/* Swiper Navigation 버튼 기본 상태 - 숨김 */
+.swiper-button-next,
 .swiper-button-prev,
-.swiper-button-next {
-  @apply w-11 opacity-0 invisible transition-all duration-300 ease-in-out;
+.swiper-pagination {
+  opacity: 0; /* 기본적으로 투명하게 숨김 */
+  color: white;
+  visibility: hidden; /* 완전히 숨김 */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.swiper-button-prev {
-  @apply translate-x-12;
+/* Swiper 컨테이너에 호버 시 버튼과 페이지네이션 표시 */
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-button-prev,
+.swiper:hover .swiper-pagination {
+  opacity: 1; /* 완전히 보이도록 설정 */
+  color: white;
+  visibility: visible; /* 표시 */
 }
 
-.swiper-button-next {
-  @apply -translate-x-12;
+/* 전역 CSS - Swiper Pagination 스타일 */
+.swiper-pagination-bullet {
+  background-color: white !important; /* 흰색 */
+  opacity: 0.6 !important; /* 약간 투명하게 */
+  transition: opacity 0.3s ease !important;
 }
 
-.swiper-container:hover .swiper-button-prev,
-.swiper-container:hover .swiper-button-next {
-  @apply translate-x-0 opacity-100 visible;
+.swiper-pagination-bullet-active {
+  background-color: white !important; /* 활성화된 페이지네이션 색상 */
+  opacity: 1 !important; /* 불투명하게 */
 }
 
 

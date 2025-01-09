@@ -5,11 +5,14 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  padding-top: 80px; /* 필요에 따라 값 조정 */
+  padding-bottom: 150px;
   /* Optional: Add padding or margin if needed */
 }
 
 .slideInner {
   /* Ensure the image scales properly */
+  padding: 10px;
   width: 100%;
   height: 38vw;
 }
@@ -20,6 +23,23 @@
   width: 100%;
   height: 38vw;
 }
+/* PhotosSection.module.css */
+
+
+.customSwiper .swiper-button-next,
+.customSwiper .swiper-button-prev,
+.customSwiper .swiper-pagination {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.customSwiper:hover .swiper-button-next,
+.customSwiper:hover .swiper-button-prev,
+.customSwiper:hover .swiper-pagination {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 
 /* Content Overlay */
 .content {

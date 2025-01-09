@@ -20,7 +20,6 @@ export default function Home() {
       </Head>
       <Header />
       <HeroSection />
-      <div className="absolute bottom-0 w-full border-b-4 border-dashed border-white"></div>
       <AboutSection />
       {/* 동적 로드된 PhotosSection */}
       <PhotosSection />

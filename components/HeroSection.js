@@ -14,17 +14,6 @@ export default function HeroSection() {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Parallax effect for clouds
-    gsap.to(cloudRef.current, {
-      y: () => window.innerHeight * 0.1, // Adjust the multiplier as needed
-      ease: 'none',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
 
     // Fade out text as user scrolls
     gsap.to(textRef.current, {
@@ -33,8 +22,8 @@ export default function HeroSection() {
       ease: 'none',
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'center top',
-        end: 'bottom top',
+        start: 'center center',
+        end: 'bottom center',
         scrub: true,
       },
     });
@@ -62,7 +51,7 @@ export default function HeroSection() {
       {/* Hero 배경 이미지 */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero.jpg"
+          src="/images/hero.jpeg"
           alt="Hero Background"
           fill
           style={{ objectFit: 'cover' }}

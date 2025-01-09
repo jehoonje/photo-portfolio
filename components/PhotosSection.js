@@ -35,13 +35,14 @@ export default function PhotosSection() {
     <section
       id="photos"
       className={`relative w-full min-h-screen bg-black flex items-center justify-center overflow-hidden`}
-      style={{ height: '150vh' }} // Ensures sufficient scroll length
+      style={{ height: '200vh' }} // Ensures sufficient scroll length
     >
       <Swiper
         modules={[EffectCoverflow, Pagination, Navigation]}
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
+        initialSlide={1}
         slidesPerView={3} // Default to 3 slides
         loop={true}
         speed={800}
