@@ -28,6 +28,19 @@ export default function Header() {
     { label: "contact", href: "#contact" },
   ];
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault(); // 기본 동작(링크 이동)을 막음
+  
+    // 부드럽게 스크롤 이동
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <motion.header
       initial={{ backgroundColor: "rgba(0,0,0,0)" }}
@@ -36,7 +49,8 @@ export default function Header() {
       }}
       transition={{ duration: 0.3 }}
       className="fixed top-0 left-0 w-full h-[100px] flex items-center justify-center z-50"
-      style={{ backdropFilter: isScrolled ? "blur(5px)" : "none" }}
+      style={{ backdropFilter: isScrolled ? "blur(5px)" : "none", 
+      }}
     >
       <nav className="max-w-7xl w-full px-6 flex justify-end space-x-8">
         {navItems.map((item) => (

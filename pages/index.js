@@ -7,8 +7,9 @@ import AboutSection from '../components/AboutSection';
 import FixedFooter from '../components/FixedFooter';
 import dynamic from 'next/dynamic';
 
+// PhotosSection을 클라이언트 사이드에서만 로드
 const PhotosSection = dynamic(() => import('../components/PhotosSection'), {
-  ssr: false, // 클라이언트에서만 렌더
+  ssr: false,
 });
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       </Head>
       <Header />
       <HeroSection />
+      <div className="absolute bottom-0 w-full border-b-4 border-dashed border-white"></div>
       <AboutSection />
       {/* 동적 로드된 PhotosSection */}
       <PhotosSection />
