@@ -1,16 +1,20 @@
-// components/PhotosSection.jsx
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import styles from './PhotosSection.module.css'; // CSS Module
+import styles from './PhotosSection.module.css';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function PhotosSection() {
+  const photoRef = useRef(null);
   const images = [
     '/images/photo1.jpeg',
     '/images/photo2.jpeg',
@@ -23,7 +27,6 @@ export default function PhotosSection() {
     '/images/photo9.jpeg',
     '/images/photo10.jpeg',
   ];
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -31,19 +34,45 @@ export default function PhotosSection() {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    if (!photoRef.current) return;
+
+    // Create a local ScrollTrigger instance for pinning this section
+    const photosTrigger = ScrollTrigger.create({
+      trigger: photoRef.current,
+      start: 'top+=50 top',
+      end: '+=600', // Adjust this value as needed
+      pin: true,
+      pinSpacing: true,
+      // markers: true, // Uncomment for debugging
+    });
+
+    // Cleanup only the local trigger when the component unmounts
+    return () => {
+      photosTrigger.kill();
+    };
+  }, []);
+
   return (
     <section
       id="photos"
-      className={`relative w-full min-h-screen bg-black flex items-center justify-center overflow-hidden`}
-      style={{ height: '200vh' }} // Ensures sufficient scroll length
+      ref={photoRef}
+      className="relative w-full min-h-screen bg-black flex items-center justify-center overflow-hidden"
+      style={{
+        width: '80vw',
+        margin: '0 auto',
+        height: '135vh',
+        paddingBottom: '200px',
+        borderTop: '4px solid #111a',
+      }}
     >
       <Swiper
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[EffectCoverflow, Navigation]}
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
         initialSlide={1}
-        slidesPerView={3} // Default to 3 slides
+        slidesPerView={3}
         loop={true}
         speed={800}
         coverflowEffect={{
@@ -53,35 +82,16 @@ export default function PhotosSection() {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{
-          el: '.swiper-pagination',
-          clickable: true,
-        }}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }}
         breakpoints={{
-          1400: { // Extra large screens
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1024: { // Desktop
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          768: { // Tablets
-            slidesPerView: 2,
-            spaceBetween: 15,
-          },
-          640: { // Small tablets
-            slidesPerView: 1.5,
-            spaceBetween: 10,
-          },
-          0: { // Mobile
-            slidesPerView: 1.5,
-            spaceBetween: 5,
-          },
+          1400: { slidesPerView: 3, spaceBetween: 30 },
+          1024: { slidesPerView: 3, spaceBetween: 20 },
+          768: { slidesPerView: 2, spaceBetween: 15 },
+          640: { slidesPerView: 1.5, spaceBetween: 10 },
+          0: { slidesPerView: 1.5, spaceBetween: 5 },
         }}
         onImagesReady={() => setIsLoading(false)}
         className={`swiper-container ${isLoading ? 'loading' : ''}`}
@@ -89,12 +99,11 @@ export default function PhotosSection() {
         {images.map((src, index) => (
           <SwiperSlide key={index} className={styles.swiperSlide}>
             <div className={styles.slideInner}>
-              <Image
+            <Image
                 src={src}
                 alt={`Photo ${index + 1}`}
-                layout="responsive"
-                width={500}
-                height={500}
+                layout="fill"
+                objectFit="cover"
                 className={styles.entityImg}
               />
             </div>
@@ -106,9 +115,6 @@ export default function PhotosSection() {
             </div>
           </SwiperSlide>
         ))}
-
-        {/* Pagination */}
-        <div className="swiper-pagination"></div>
 
         {/* Navigation Buttons */}
         <div className="swiper-button-prev"></div>

@@ -50,6 +50,10 @@ body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.swiper-pagination  {
+  display: none;
+}
+
 /* Swiper 컨테이너에 호버 시 버튼과 페이지네이션 표시 */
 .swiper:hover .swiper-button-next,
 .swiper:hover .swiper-button-prev,
@@ -57,6 +61,9 @@ body {
   opacity: 1; /* 완전히 보이도록 설정 */
   color: white;
   visibility: visible; /* 표시 */
+  @media screen and (max-width:480px) {
+    display: none;
+  }
 }
 
 /* 전역 CSS - Swiper Pagination 스타일 */

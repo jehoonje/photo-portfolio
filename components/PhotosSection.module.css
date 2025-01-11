@@ -1,12 +1,13 @@
-/* components/PhotosSection.module.css */
-
 /* Swiper Slide */
 .swiperSlide {
   background-position: center;
   background-size: cover;
   position: relative;
-  padding-top: 80px; /* 필요에 따라 값 조정 */
-  padding-bottom: 150px;
+  width: 100%;
+  aspect-ratio: 4 / 5; /* Maintains a 4:3 ratio */
+  overflow: hidden;
+  /* padding-top: 80px; */
+  /* padding-bottom: 250px; */
   /* Optional: Add padding or margin if needed */
 }
 
@@ -14,18 +15,17 @@
   /* Ensure the image scales properly */
   padding: 10px;
   width: 100%;
-  height: 38vw;
 }
 
 .entityImg {
   display: block;
+  object-fit: cover;
   /* Ensure the image fits within the slide */
   width: 100%;
-  height: 38vw;
+  height: 28vw; 
 }
-/* PhotosSection.module.css */
 
-
+/* Navigation & Pagination Visibility */
 .customSwiper .swiper-button-next,
 .customSwiper .swiper-button-prev,
 .customSwiper .swiper-pagination {
@@ -40,11 +40,10 @@
   visibility: visible !important;
 }
 
-
 /* Content Overlay */
 .content {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 5%;
   width: 90%;
   color: #fff;
@@ -119,7 +118,7 @@
   }
 }
 
-@media (max-width: 480) {
+@media (max-width: 480px) {
   .content {
     bottom: 2%;
     left: 1%;

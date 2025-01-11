@@ -1,24 +1,19 @@
-// components/HeroSection.js
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'; // Ensure proper import for Next.js
 
 export default function HeroSection() {
-  // References for DOM elements
-  const cloudRef = useRef(null);
   const textRef = useRef(null);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-
-    // Fade out text as user scrolls
-    gsap.to(textRef.current, {
+    // Create the fade animation and assign its trigger instance
+    const fadeTrigger = gsap.to(textRef.current, {
       opacity: 0,
-      y: 0, // Optional: move text upwards as it fades
+      y: 0,
       ease: 'none',
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -28,8 +23,8 @@ export default function HeroSection() {
       },
     });
 
-    // Optional: Pin the hero section during the scroll animation
-    ScrollTrigger.create({
+    // Create a ScrollTrigger instance for pinning
+    const pinTrigger = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top top',
       end: '+=100%', // Adjust the end point as needed
@@ -37,9 +32,10 @@ export default function HeroSection() {
       pinSpacing: false,
     });
 
-    // Cleanup on unmount
+    // Cleanup only these local triggers on unmount
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      fadeTrigger.scrollTrigger && fadeTrigger.scrollTrigger.kill();
+      pinTrigger.kill();
     };
   }, []);
 
@@ -48,7 +44,7 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative w-full h-screen overflow-hidden bg-black"
     >
-      {/* Hero 배경 이미지 */}
+      {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero.jpeg"
@@ -59,10 +55,10 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* 반투명 오버레이 */}
+      {/* Semi-transparent overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40 z-10" />
 
-      {/* Hero 텍스트 */}
+      {/* Hero text */}
       <div
         ref={textRef}
         className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 transition-opacity duration-500"
@@ -71,7 +67,5 @@ export default function HeroSection() {
         <p className="mt-4 text-lg md:text-xl">Scroll down to explore</p>
       </div>
     </section>
-
-    
   );
 }
