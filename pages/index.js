@@ -12,6 +12,11 @@ const PhotosSection = dynamic(() => import('../components/PhotosSection'), {
   ssr: false,
 });
 
+// PhotosSection을 클라이언트 사이드에서만 로드
+const MixSection = dynamic(() => import('../components/MixSection'), {
+  ssr: false,
+});
+
 export default function Home() {
   return (
     <>
@@ -23,12 +28,7 @@ export default function Home() {
       <AboutSection />
       {/* 동적 로드된 PhotosSection */}
       <PhotosSection />
-      <section
-        id="articles"
-        className="min-h-screen bg-black text-white flex items-center justify-center"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold">Articles (Coming Soon)</h2>
-      </section>
+      <MixSection />
       <FixedFooter />
     </>
   );

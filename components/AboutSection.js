@@ -22,7 +22,7 @@ export default function AboutSection() {
         scrollTrigger: {
           trigger: aboutRef.current,
           start: 'top top',
-          end: '+=1200', // Adjust as needed
+          end: '+=1500', // Adjust as needed
           pin: true,
           scrub: true,
           // markers: { startColor: 'blue', endColor: 'purple', fontSize: '12px' },

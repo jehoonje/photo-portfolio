@@ -41,7 +41,7 @@ export default function PhotosSection() {
     const photosTrigger = ScrollTrigger.create({
       trigger: photoRef.current,
       start: 'top+=50 top',
-      end: '+=600', // Adjust this value as needed
+      end: '+=1500', // Adjust this value as needed
       pin: true,
       pinSpacing: true,
       // markers: true, // Uncomment for debugging
