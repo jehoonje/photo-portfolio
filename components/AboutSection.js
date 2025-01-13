@@ -36,7 +36,9 @@ export default function AboutSection() {
 
       // Cleanup: kill only the timeline's trigger
       return () => {
-        tl.scrollTrigger && tl.scrollTrigger.kill();
+        if (tl.scrollTrigger) {
+          tl.scrollTrigger.kill();
+        }
       };
     });
   }, [lines]);

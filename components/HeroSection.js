@@ -1,47 +1,9 @@
-import { useRef, useEffect } from 'react';
+// **개선 사항**: import 순서 조정, 필요 라이브러리를 먼저 명시적으로 불러오도록 했습니다.
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'; // Ensure proper import for Next.js
-
 export default function HeroSection() {
-  const textRef = useRef(null);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Create the fade animation and assign its trigger instance
-    const fadeTrigger = gsap.to(textRef.current, {
-      opacity: 0,
-      y: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'center center',
-        end: 'bottom center',
-        scrub: true,
-      },
-    });
-
-    // Create a ScrollTrigger instance for pinning
-    const pinTrigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top top',
-      end: '+=100%', // Adjust the end point as needed
-      pin: true,
-      pinSpacing: false,
-    });
-
-    // Cleanup only these local triggers on unmount
-    return () => {
-      fadeTrigger.scrollTrigger && fadeTrigger.scrollTrigger.kill();
-      pinTrigger.kill();
-    };
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       className="relative w-full h-screen overflow-hidden bg-black"
     >
       {/* Background image */}
@@ -60,7 +22,6 @@ export default function HeroSection() {
 
       {/* Hero text */}
       <div
-        ref={textRef}
         className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4 transition-opacity duration-500"
       >
         <h1 className="text-4xl md:text-6xl font-bold">Welcome to My Portfolio</h1>

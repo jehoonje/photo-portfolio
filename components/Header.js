@@ -1,4 +1,3 @@
-// components/Header.js
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion"; // 애니메이션 효과(선택)
 
@@ -24,7 +23,7 @@ export default function Header() {
   const navItems = [
     { label: "about", href: "#about" },
     { label: "photos", href: "#photos" },
-    { label: "articles", href: "#articles" },
+    { label: "articles", href: "#articles" }, // articles가 mixsection(#articles)과 연결됨
     { label: "contact", href: "#contact" },
   ];
 
@@ -49,8 +48,7 @@ export default function Header() {
       }}
       transition={{ duration: 0.3 }}
       className="fixed top-0 left-0 w-full h-[100px] flex items-center justify-center z-50"
-      style={{ backdropFilter: isScrolled ? "blur(5px)" : "none", 
-      }}
+      style={{ backdropFilter: isScrolled ? "blur(5px)" : "none" }}
     >
       <nav className="max-w-7xl w-full px-6 flex justify-end space-x-8">
         {navItems.map((item) => (
