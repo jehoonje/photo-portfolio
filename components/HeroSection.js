@@ -4,7 +4,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-screen overflow-hidden bg-black"
+      className="relative w-full h-screen bg-black"
     >
       {/* Background image */}
       <div className="absolute inset-0 z-0">

@@ -43,8 +43,8 @@ export default function PhotosSection({ onResourceLoad }) {
       start: "top top",
       end: "+=800",
       pin: true,
-      pinSpacing: true,
-      markers: true,
+      pinSpacing: false,
+      markers: false,
     });
 
     return () => {
@@ -56,11 +56,12 @@ export default function PhotosSection({ onResourceLoad }) {
     <section
       id="photos"
       ref={photoRef}
-      className="relative w-full min-h-screen bg-black flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-screen bg-black flex items-center justify-center"
       style={{
         width: "80vw",
         margin: "0 auto",
         height: "140vh",
+        marginBottom: "500px",
         paddingBottom: "350px",
         borderTop: "4px solid #111a",
       }}
