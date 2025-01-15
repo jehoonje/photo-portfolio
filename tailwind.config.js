@@ -29,6 +29,14 @@ module.exports = {
         'archivo': ['Archivo', 'sans-serif'],
         'clash-display': ['Clash Display', 'sans-serif'],
       },
+      spacing: {
+        '104': '26rem', // 96(24rem)과 128(32rem) 사이 값
+        '112': '28rem', 
+        '128': '32rem', // 새로운 값 추가
+        '144': '36rem',
+        '160': '40rem', // 40rem 추가
+        '192': '48rem', 
+      },
     },
   },
   plugins: [],
