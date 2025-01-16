@@ -1,0 +1,38 @@
+name: Deploy Next.js Site to GitHub Pages
+
+# main 브랜치에 push가 발생하면 실행
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 저장소 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Node.js 환경 설정 (프로젝트에 맞는 버전을 사용)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # 사용 중인 Node.js 버전 지정
+
+      # 3. 의존성 설치
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Next.js 앱 빌드 및 정적 내보내기 (out 폴더에 산출)
+      - name: Build and Export
+        run: npm run deploy
+        # 위 명령은 package.json의 "deploy" 스크립트를 호출함
+
+      # 5. GitHub Pages 배포 (gh-pages 브랜치에 업로드)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out   # next export 결과물이 위치하는 폴더
