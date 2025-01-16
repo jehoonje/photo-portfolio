@@ -36,37 +36,37 @@ export default function MixSection() {
           <iframe
             className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
             scrolling="no"
-            frameBorder="no"
+            frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1831342242&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1926103367&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
           ></iframe>
           <iframe
             className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
             scrolling="no"
-            frameBorder="no"
+            frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1831342242&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1418699092&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
           ></iframe>
           <iframe
             className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
             scrolling="no"
-            frameBorder="no"
+            frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1831342242&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1629740511&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
           ></iframe>
           <iframe
             className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
             scrolling="no"
-            frameBorder="no"
+            frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1831342242&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1655524542&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
           ></iframe>
           <iframe
             className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
             scrolling="no"
-            frameBorder="no"
+            frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1831342242&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1705728921&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
           ></iframe>
         </div>
       </div>
