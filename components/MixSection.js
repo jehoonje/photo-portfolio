@@ -68,6 +68,20 @@ export default function MixSection() {
             allow="autoplay"
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1705728921&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
           ></iframe>
+          <iframe
+            className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1726012296&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+          ></iframe>
+          <iframe
+            className="md:w-[40%] w-[100%] h-[15px] md:h-[120px]"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1953712599&color=%23ff5500&inverse=true&auto_play=false&show_user=true"
+          ></iframe>
         </div>
       </div>
     </section>
