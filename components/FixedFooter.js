@@ -20,6 +20,7 @@ export default function FixedFooter() {
           absolute
           inset-0
           flex
+          md:bg-contain
           justify-center
           items-center
         "

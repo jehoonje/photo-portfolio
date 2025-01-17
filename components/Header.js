@@ -23,7 +23,7 @@ export default function Header() {
   const navItems = [
     { label: "about", href: "#about" },
     { label: "photos", href: "#photos" },
-    { label: "articles", href: "#articles" }, // articles가 mixsection(#articles)과 연결됨
+    { label: "articles", href: "#articles" },
     { label: "contact", href: "#contact" },
   ];
 
@@ -50,7 +50,7 @@ export default function Header() {
       className="fixed top-0 left-0 w-full h-[100px] flex items-center justify-center z-50"
       style={{ backdropFilter: isScrolled ? "blur(5px)" : "none" }}
     >
-      <nav className="max-w-7xl w-full px-6 flex justify-end space-x-8">
+      <nav className="max-w-7xl w-full px-6 flex flex-row justify-center items-center space-x-8 md:space-x-8">
         {navItems.map((item) => (
           <a
             key={item.label}

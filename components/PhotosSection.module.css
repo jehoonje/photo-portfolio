@@ -4,24 +4,21 @@
   background-size: cover;
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5; /* Maintains a 4:3 ratio */
+  aspect-ratio: 4 / 5;
 }
 
 .slideInner {
-  /* Ensure the image scales properly */
   padding: 10px;
   width: 100%;
 }
 
 .entityImg {
   display: block;
-  object-fit: cover;
-  /* Ensure the image fits within the slide */
+  object-fit: cover; 
   width: 100%;
   height: 28vw; 
 }
 
-/* Navigation & Pagination Visibility */
 .customSwiper .swiper-button-next,
 .customSwiper .swiper-button-prev,
 .customSwiper .swiper-pagination {
@@ -122,10 +119,10 @@
   }
 
   .title {
-    font-size: 0.5em;
+    font-size: 1em;
   }
 
   .caption {
-    font-size: 0.25em;
+    font-size: 0.8em;
   }
 }
