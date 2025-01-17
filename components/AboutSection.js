@@ -56,7 +56,7 @@ export default function AboutSection() {
         <div className="w-full md:w-1/2 h-full p-4 flex justify-center">
           <div className="relative w-72 h-72 md:w-96 md:h-96">
             <Image
-              src="/images/about.jpg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/about.jpg`}
               alt="About Image"
               layout="fill"
               objectFit="cover"

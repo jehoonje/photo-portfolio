@@ -9,7 +9,7 @@ export default function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero.jpeg"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/hero.jpeg`}
           alt="Hero Background"
           fill
           style={{ objectFit: 'cover' }}

@@ -16,17 +16,18 @@ if (typeof window !== "undefined") {
 
 export default function PhotosSection({ onResourceLoad }) {
   const photoRef = useRef(null);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const images = [
-    "/images/photo1.jpeg",
-    "/images/photo2.jpeg",
-    "/images/photo3.jpeg",
-    "/images/photo4.jpeg",
-    "/images/photo5.jpeg",
-    "/images/photo6.jpeg",
-    "/images/photo7.jpeg",
-    "/images/photo8.jpeg",
-    "/images/photo9.jpeg",
-    "/images/photo10.jpeg",
+    `${basePath}/images/photo1.jpeg`,
+    `${basePath}/images/photo2.jpeg`,
+    `${basePath}/images/photo3.jpeg`,
+    `${basePath}/images/photo4.jpeg`,
+    `${basePath}/images/photo5.jpeg`,
+    `${basePath}/images/photo6.jpeg`,
+    `${basePath}/images/photo7.jpeg`,
+    `${basePath}/images/photo8.jpeg`,
+    `${basePath}/images/photo9.jpeg`,
+    `${basePath}/images/photo10.jpeg`,
   ];
   const [isLoading, setIsLoading] = useState(true);
 
