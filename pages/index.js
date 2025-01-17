@@ -7,10 +7,15 @@ import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import FixedFooter from "../components/FixedFooter";
+import BootScreen from "../components/BootScreen";
 
 // 클라이언트 사이드에서만 로드되는 컴포넌트
-const PhotosSection = dynamic(() => import("../components/PhotosSection"), { ssr: false });
-const MixSection = dynamic(() => import("../components/MixSection"), { ssr: false });
+const PhotosSection = dynamic(() => import("../components/PhotosSection"), {
+  ssr: false,
+});
+const MixSection = dynamic(() => import("../components/MixSection"), {
+  ssr: false,
+});
 
 export default function Home() {
   const aboutRef = useRef(null);
@@ -19,6 +24,8 @@ export default function Home() {
   const footerRef = useRef(null);
   const footerTextRef = useRef(null);
   const [scrollTriggerLoaded, setScrollTriggerLoaded] = useState(false);
+  const [isGsapReady, setIsGsapReady] = useState(false);
+  const [isBootScreenVisible, setIsBootScreenVisible] = useState(true);
 
   // 📌 `ScrollTrigger`를 동적으로 import하고 등록
   useEffect(() => {
@@ -32,7 +39,15 @@ export default function Home() {
 
   // 📌 `scrollTriggerLoaded`가 true일 때만 실행
   useEffect(() => {
-    if (!scrollTriggerLoaded || !aboutRef.current || !photosRef.current || !mixRef.current || !footerRef.current || !footerTextRef.current) return;
+    if (
+      !scrollTriggerLoaded ||
+      !aboutRef.current ||
+      !photosRef.current ||
+      !mixRef.current ||
+      !footerRef.current ||
+      !footerTextRef.current
+    )
+      return;
 
     import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
       // 기존 ScrollTrigger 제거
@@ -49,7 +64,8 @@ export default function Home() {
             start: "top top",
             end: "+=1200",
             pin: true,
-            scrub: true,
+            scrub: 1.5, // 🎯 자연스러운 애니메이션 속도 조정
+            anticipatePin: 1,
           },
         });
 
@@ -64,8 +80,8 @@ export default function Home() {
         start: "top top",
         end: "+=800",
         pin: true,
-        pinSpacing: true,
-        scrub: true,
+        scrub: 1.5, // 🎯 자연스럽게 따라오도록 설정
+        anticipatePin: 1,
       });
 
       // 🟢 **MixSection - iframe 페이드 인**
@@ -101,6 +117,9 @@ export default function Home() {
 
       // 모든 트리거 최신화
       ScrollTrigger.refresh();
+
+      // ✅ gsap 로딩 완료 후 BootScreen 제거 (5초 후)
+      setIsGsapReady(true);
     });
 
     return () => {
@@ -113,6 +132,12 @@ export default function Home() {
       <Head>
         <title>My Portfolio</title>
       </Head>
+
+      {/* ✅ BootScreen 추가 - GSAP 로딩 후 5초 후에 페이드아웃 */}
+      {isBootScreenVisible && (
+        <BootScreen onLoaded={() => setIsBootScreenVisible(false)} />
+      )}
+
       <Header />
       <HeroSection />
 
