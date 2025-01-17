@@ -73,7 +73,7 @@ export default function AboutSection({ aboutRef }) {
         </div>
 
         {/* Right-side text */}
-        <div className="w-full md:w-1/2 p-6 text-lg leading-relaxed text-gray-500">
+        <div className="w-full md:w-1/2 p-4 text-lg leading-relaxed text-gray-500">
           {lines.map((text, idx) => (
             <p key={idx} className="about-line mb-4">
               {text}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
@@ -16,6 +16,8 @@ export default function Home() {
   const aboutRef = useRef(null);
   const photosRef = useRef(null);
   const mixRef = useRef(null);
+  const footerRef = useRef(null);
+  const footerTextRef = useRef(null);
   const [scrollTriggerLoaded, setScrollTriggerLoaded] = useState(false);
 
   // 📌 `ScrollTrigger`를 동적으로 import하고 등록
@@ -30,7 +32,7 @@ export default function Home() {
 
   // 📌 `scrollTriggerLoaded`가 true일 때만 실행
   useEffect(() => {
-    if (!scrollTriggerLoaded || !aboutRef.current || !photosRef.current || !mixRef.current) return;
+    if (!scrollTriggerLoaded || !aboutRef.current || !photosRef.current || !mixRef.current || !footerRef.current || !footerTextRef.current) return;
 
     import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
       // 기존 ScrollTrigger 제거
@@ -45,7 +47,7 @@ export default function Home() {
           scrollTrigger: {
             trigger: aboutRef.current,
             start: "top top",
-            end: "+=800",
+            end: "+=1200",
             pin: true,
             scrub: true,
           },
@@ -82,6 +84,21 @@ export default function Home() {
         mixTl.to(mixIframes, { opacity: 1, duration: 1, stagger: 0.5 });
       }
 
+      // 🎯 **FixedFooter - Get in Touch 자연스럽게 페이드인**
+      gsap.set(footerTextRef.current, { opacity: 0, y: 30 });
+
+      gsap.to(footerTextRef.current, {
+        opacity: 1,
+        y: -20,
+        duration: 2, // 서서히 나타나는 효과 추가
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 85%", // 🔹 화면의 85%에 도달하면 트리거 시작
+          toggleActions: "play none none none", // 🔹 한 번만 실행되도록 설정
+        },
+      });
+
       // 모든 트리거 최신화
       ScrollTrigger.refresh();
     });
@@ -101,12 +118,12 @@ export default function Home() {
 
       {/* 🔴 About Section */}
       <div ref={aboutRef}>
-        <AboutSection aboutRef={aboutRef}  />
+        <AboutSection aboutRef={aboutRef} />
       </div>
 
       {/* 🔵 Photos Section */}
       <div ref={photosRef}>
-        <PhotosSection photosRef={photosRef}  />
+        <PhotosSection photosRef={photosRef} />
       </div>
 
       {/* 🟢 Mix Section */}
@@ -114,7 +131,10 @@ export default function Home() {
         <MixSection mixRef={mixRef} />
       </div>
 
-      <FixedFooter />
+      {/* 🎯 FixedFooter */}
+      <div ref={footerRef}>
+        <FixedFooter footerTextRef={footerTextRef} />
+      </div>
     </>
   );
 }
