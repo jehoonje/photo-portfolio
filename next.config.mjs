@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+const customBasePath = process.env.CUSTOM_BASE_PATH || "";
+
 const nextConfig = {
   reactStrictMode: false,
   output: 'export',
-  basePath: '/photo-portfolio',
-  assetPrefix: '/photo-portfolio',
+  basePath: customBasePath,
+  assetPrefix: customBasePath || undefined, // customBasePath가 없으면 undefined
   images: { unoptimized: true },
 };
 
