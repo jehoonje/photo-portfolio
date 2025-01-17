@@ -59,7 +59,7 @@ export default function AboutSection() {
               src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/about.jpg`}
               alt="About Image"
               layout="fill"
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
