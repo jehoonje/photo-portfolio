@@ -1,19 +1,21 @@
+// app/page.js
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
 
-import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
-import FixedFooter from "../components/FixedFooter";
-import BootScreen from "../components/BootScreen";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import FixedFooter from "./components/FixedFooter";
+import BootScreen from "./components/BootScreen";
 
 // 클라이언트 사이드에서만 로드되는 컴포넌트
-const PhotosSection = dynamic(() => import("../components/PhotosSection"), {
+const PhotosSection = dynamic(() => import("./components/PhotosSection"), {
   ssr: false,
 });
-const MixSection = dynamic(() => import("../components/MixSection"), {
+const MixSection = dynamic(() => import("./components/MixSection"), {
   ssr: false,
 });
 

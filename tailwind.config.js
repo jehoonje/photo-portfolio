@@ -2,7 +2,7 @@
 
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     // 추가적인 파일 경로
   ],
